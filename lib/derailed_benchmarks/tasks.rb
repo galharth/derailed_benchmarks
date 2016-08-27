@@ -118,7 +118,7 @@ namespace :perf do
     end
     TEST_COUNT = (ENV["TEST_COUNT"] ||= "100").to_i
     file = "tmp/#{Time.now.iso8601}-stackprof-cpu-myapp.dump"
-    StackProf.run(mode: :cpu, out: file) do
+    StackProf.run(mode: :wall, out: file) do
       Rake::Task["perf:test"].invoke
     end
     cmd = "stackprof #{file}"
